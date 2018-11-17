@@ -1,0 +1,9 @@
+
+Upload MyReact30
+
+For each Demo (1 day at a time)
+  * Create a react app 0n-project-name
+  * Take old html of each file JS project and convert to JSX
+  * Begin challenge
+  * Complete Challenge
+  * Write article outlining each challenge

@@ -1,0 +1,11 @@
+{
+  "name": "myreact30",
+  "version": "1.0.0",
+  "description": "Collection of Wes Bos's 30 day JS challange created as a react app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TJ Allen",
+  "license": "MIT"
+}
