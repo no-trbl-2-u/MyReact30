@@ -7,3 +7,18 @@ For each Demo (1 day at a time)
   * Begin challenge
   * Complete Challenge
   * Write article outlining each challenge
+
+01 - Procedure::
+  - Seperate the HTML out into a newly created file 
+    to hold all the information about each key.
+  - Map over the newly created data to generate each
+    key on the Drum Pad
+01 - issues ::
+  - Where do I put the event listener?! (CompDidMount)
+  - Where do I store the sounds folder?
+    > The folder won't get sent to the browser o.0?
+      >> Create an index.js
+      >> Import each sound individually
+      >> Export each sound individually
+      >> import the index.js in DrumSet
+      >> ?? Still doesn't work.!.!?!./\\/\/ff.\/
