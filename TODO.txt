@@ -11,14 +11,38 @@ For each Demo (1 day at a time)
 01 - Procedure::
   - Seperate the HTML out into a newly created file 
     to hold all the information about each key.
+  - Create a file called KeyData to hold the generated src value
+    the name of the sound, keyValue, keyCodeValue
   - Map over the newly created data to generate each
     key on the Drum Pad
+  - Set up the functionality in the componentDidMount in
+    the DrumSet Component
 01 - issues ::
   - Where do I put the event listener?! (CompDidMount)
   - Where do I store the sounds folder?
     > The folder won't get sent to the browser o.0?
-      >> Create an index.js
+      >> Create an index.js in /sounds
       >> Import each sound individually
-      >> Export each sound individually
+      >> Create an array of all the sounds
+      >> Export the array of sounds
       >> import the index.js in DrumSet
-      >> ?? Still doesn't work.!.!?!./\\/\/ff.\/
+      >> Console.log the imported array to get the new src url
+      >> import sounds from './sounds'; render(...console.log(sounds) ... return(...)
+      >> ~ Browser's Console ~ 
+        >(9) ["/static/media/boom.550be808.wav", "/static/media/clap.a6e86dd7.wav", "/static/media/hihat.4ba39e07.wav", "/static/media/kick.4dd58595.wav", "/static/media/openhat.a62db465.wav", "/static/media/ride.b0d70ec5.wav", "/static/media/snare.80c4129b.wav", "/static/media/tom.572ed39d.wav", "/static/media/tink.2a6bb6f5.wav"]
+          0: "/static/media/boom.550be808.wav"
+          1: "/static/media/clap.a6e86dd7.wav"
+          2: "/static/media/hihat.4ba39e07.wav"
+          3: "/static/media/kick.4dd58595.wav"
+          4: "/static/media/openhat.a62db465.wav"
+          5: "/static/media/ride.b0d70ec5.wav"
+          6: "/static/media/snare.80c4129b.wav"
+          7: "/static/media/tom.572ed39d.wav"
+          8: "/static/media/tink.2a6bb6f5.wav"
+          length: 9
+          __proto__: Array(0)
+      >> Set KeyData "source" to new src value.
+  - How to get the sound to repeat on multiple hits
+    > The event waits to complete the audio file before
+      it triggers the next audio sample
+      >> Follow Wes's Advice ->

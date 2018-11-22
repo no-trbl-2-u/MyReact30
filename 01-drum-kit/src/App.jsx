@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import DrumSet from './DrumSet/DrumSet'
 import keyData from './DrumSet/keyData'
 
+import sounds from './sounds';
+
 import './App.css'
 
 class App extends Component {
