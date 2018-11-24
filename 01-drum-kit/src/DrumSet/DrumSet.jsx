@@ -5,10 +5,22 @@ class DrumSet extends Component {
 
   componentDidMount() {
     document.addEventListener('keydown', event => {
+      // Isolate the specific audio tag via a 
+      // dynamic reference to the 'data-key'
+      let key = document.querySelector(`.key[data-key="${event.keyCode}"`)
       const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`)
-      if(!audio) return;
-      audio.currentTime = 0;
-      audio.play();
+      if(!audio) return; // Null any keys w/o sound
+
+      // Handle Class Changing
+      key.className = 'key playing'
+      
+      setTimeout(() => {
+        key.className = 'key' // Turn off 'playing' class
+      }, 100);
+
+      // Handle Audio
+      audio.currentTime = 0; // Rewind to start of sample
+      audio.play(); // Play the .wav file associated w/ key
     })
   }
 

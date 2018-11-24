@@ -9,14 +9,18 @@ For each Demo (1 day at a time)
   * Write article outlining each challenge
 
 01 - Procedure::
-  - Seperate the HTML out into a newly created file 
+  *- Seperate the HTML out into a newly created file 
     to hold all the information about each key.
-  - Create a file called KeyData to hold the generated src value
+  *- Create a file called KeyData to hold the generated src value
     the name of the sound, keyValue, keyCodeValue
-  - Map over the newly created data to generate each
+  *- Map over the newly created data to generate each
     key on the Drum Pad
-  - Set up the functionality in the componentDidMount in
+  *- Set up the functionality in the componentDidMount in
     the DrumSet Component
+    > Add class of playing to the key
+    > Add click events on each key (For Mobile!!)
+    *> Rewind audio clip
+    *> Play audio clip
 01 - issues ::
   - Where do I put the event listener?! (CompDidMount)
   - Where do I store the sounds folder?
