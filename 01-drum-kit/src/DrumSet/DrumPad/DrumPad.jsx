@@ -1,15 +1,14 @@
 import React from 'react';
 
 const DrumPad = (props) => {
-  const {dataKey, kbdKey, sound} = props
-
+  const {dataKey, kbdKey, sound} = props;
   return (
-    <div>
+    <React.Fragment>
       <div data-key={ dataKey } className="key">
         <kbd>{ kbdKey }</kbd>
         <span className="sound">{ sound }</span>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

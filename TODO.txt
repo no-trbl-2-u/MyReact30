@@ -21,6 +21,9 @@ For each Demo (1 day at a time)
     > Add click events on each key (For Mobile!!)
     *> Rewind audio clip
     *> Play audio clip
+    > Remove the 'playing' className
+      - w/ setTimeOut (DONE) // NOT using
+      - w/ transitionend     // WILL use (CANNOT!!!)
 01 - issues ::
   - Where do I put the event listener?! (CompDidMount)
   - Where do I store the sounds folder?
@@ -49,4 +52,7 @@ For each Demo (1 day at a time)
   - How to get the sound to repeat on multiple hits
     > The event waits to complete the audio file before
       it triggers the next audio sample
-      >> Follow Wes's Advice ->
+      >> Follow Wes's Advice -> "rewind"
+        > audio.currentTime = 0
+  - How to get the animation to transition back to normal
+    > 
