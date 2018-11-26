@@ -57,8 +57,7 @@ class DrumSet extends Component {
     const { keyData } = this.props;
     return (
       <div className="keys-container">
-
-      {/* Map over  */}
+      {/* Map over keyData to construct each DrumPad */}
       { keyData.map((each, index) => (
         <div key={ index }>
           <DrumPad
