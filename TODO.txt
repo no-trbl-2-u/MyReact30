@@ -17,13 +17,16 @@ For each Demo (1 day at a time)
     key on the Drum Pad
   *- Set up the functionality in the componentDidMount in
     the DrumSet Component
-    > Add class of playing to the key
-    > Add click events on each key (For Mobile!!)
+    *> Add class of playing to the key
     *> Rewind audio clip
     *> Play audio clip
-    > Remove the 'playing' className
-      - w/ setTimeOut (DONE) // NOT using
+    **> Remove the 'playing' className
+      *- w/ setTimeOut (DONE) // NOT using
       - w/ transitionend     // WILL use (CANNOT!!!)
+  *- Add Click Functionality
+    *> Add an onClick function to the DrumPad
+    *> Pass the data-key to the onClick function
+    *> Use the data-key information to select elements
 01 - issues ::
   - Where do I put the event listener?! (CompDidMount)
   - Where do I store the sounds folder?
@@ -55,4 +58,4 @@ For each Demo (1 day at a time)
       >> Follow Wes's Advice -> "rewind"
         > audio.currentTime = 0
   - How to get the animation to transition back to normal
-    > 
+    > >.<!
