@@ -59,3 +59,14 @@ For each Demo (1 day at a time)
         > audio.currentTime = 0
   - How to get the animation to transition back to normal
     > >.<!
+
+
+02 - Procedure ::
+  *- create-react-app 02-clock
+  *- copy over html, convert to JSX
+  *- change "body" CSS to ".root" CSS
+  -
+02 - Issues ::
+  *- Clock not centered
+    > change CSS attrs of body to .root
+  -

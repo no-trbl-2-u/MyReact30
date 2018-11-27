@@ -6,7 +6,7 @@ html {
   font-size: 10px;
 }
 
-body {
+.root {
   margin: 0;
   font-size: 2rem;
   display: flex;
@@ -43,4 +43,11 @@ body {
   background: black;
   position: absolute;
   top: 50%;
+
+  /* Change transforming origin to 100%, default=50% */
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  transition: all 0.05;
+  /* Custom transition timing */
+  transition-timing-function: cubic-bezier(0, 1.43, 0.34, 1.35);
 }
