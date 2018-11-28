@@ -11,6 +11,7 @@ class App extends Component {
       hours: 0
     }
     this.setTime = this.setTime.bind(this);
+    this.setClasses = this.setClasses.bind(this);
   }
 
   setTime() {
@@ -22,9 +23,20 @@ class App extends Component {
     })
   }
 
+  setClasses() {
+    const { seconds, minutes, hours } = this.state;
+    const secondHand = document.querySelector('.second-hand');
+    const minuteHand = document.querySelector('.min-hand');
+    const hourHand = document.querySelector('.hour-hand');
+    secondHand.style.transform = `rotate(${ (seconds / 60) * 360 }deg)`;
+    minuteHand.style.transform = `rotate(${ (minutes / 60) * 360 }deg)`;
+    hourHand.style.transform = `rotate(${ (hours / 12) * 360 }deg)`;
+
+  }
+
   componentDidMount() {
-    const now = new Date();
     this.interval = setInterval(this.setTime, 1000)
+    this.interval2 = setInterval(this.setClasses, 1000)
   }
 
   componentWillUnmount() {
@@ -39,13 +51,13 @@ class App extends Component {
           <div className="hand hour-hand"></div>
           <div className="hand min-hand"></div>
           <div className="hand second-hand"></div>
-          <div className="digital-time">
-            <span>{ (hours < 9) ? `0${hours}` : hours } : </span>
-            <span>{ minutes } : </span>
-            <span>{(seconds < 9) ? `0${seconds}` : `${seconds}`} </span>
+        </div>
+        <div className="digital-time">
+            <span>{ (hours <= 9) ? `0${hours}` : hours } &nbsp; : </span>
+            <span>{ (minutes <= 9) ? `0${minutes}` : minutes } &nbsp; : </span>
+            <span>{(seconds <= 9) ? `0${seconds}` : `${seconds}`} </span>
             <span>{(hours <= 12) ? 'AM' : 'PM'}</span>
           </div>
-        </div>
       </div>   
     );
   }
