@@ -4,6 +4,11 @@ html {
   font-family: 'helvetica neue';
   text-align: center;
   font-size: 10px;
+  height: 100%;
+}
+
+body {
+  height: 100%;
 }
 
 .root {
@@ -13,6 +18,7 @@ html {
   flex: 1;
   min-height: 100vh;
   align-items: center;
+  height: 100%;
 }
 
 .clock {
@@ -50,4 +56,11 @@ html {
   transition: all 0.05;
   /* Custom transition timing */
   transition-timing-function: cubic-bezier(0, 1.43, 0.34, 1.35);
+}
+
+.digital-time {
+  position: absolute;
+  top: 400px;
+  left: 10px;
+  font-size: 48px;
 }
