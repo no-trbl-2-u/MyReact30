@@ -8,7 +8,7 @@ class App extends Component {
     this.state = {
       seconds: 0,
       minutes: 0,
-      hours: 0
+      hours: 0,
     }
     this.setTime = this.setTime.bind(this);
     this.setClasses = this.setClasses.bind(this);
