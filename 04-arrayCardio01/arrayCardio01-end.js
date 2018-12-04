@@ -16,15 +16,42 @@ const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick
 
 // Array.prototype.filter()
 // 1. Filter the list of inventors for those who were born in the 1500's
+const results01 = inventors.filter(ea => ea.year > 1500 && ea.year < 1600)
+
 
 // Array.prototype.map()
 // 2. Give us an array of the inventors' first and last names
+const results02 = inventors.map(ea => ({first: ea.first, last: ea.last}))
+// const mistake = inventors.map(ea => {first: ea.first, last: ea.last}) // ERROR
+
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
+// Example data for Array.prototype.sort()
+const numArray = [2, 3, 1, 4]
+const alphaArray = ['d', 'a', 'c', 'b']
+const wordArray = ['ant', 'dog', 'cat', 'bat']
+
+// Numbers
+const numAsc = (a, b) => a - b;
+const numDes = (a, b) => b - a;
+
+// Letters and Words
+const alphaAsc = (a, b) => a > b;
+const alphaDec = (a, b) => b > a;
+
+// Solution
+const results03 = [...inventors].sort((a, b) => b.year - a.year)
 
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live?
+// We'll use the numArray from the previous example
+const sumOfNumArray = numArray.reduce((accum, each) => accum += each);
+// console.log(sumOfNumArray); // 10
+
+const results04 = inventors.reduce((accum, each) => accum += each.year)
+// console.log(results04)
+
 
 // 5. Sort the inventors by years lived
 
