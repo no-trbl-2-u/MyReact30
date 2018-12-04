@@ -11,41 +11,64 @@ class CSSVariables extends Component {
     this.state = {
       spaceVal : 0,
       blurVal : 0,
-      colorVal : 0
+      colorVal : '#ffffff',
+      rotateVal: 0,
     }
 
     this.handleSpaceChange = this.handleSpaceChange.bind(this);
     this.handleBlurChange = this.handleBlurChange.bind(this);
+    this.handleColorChange = this.handleColorChange.bind(this);
+    this.handleRotateChange = this.handleRotateChange.bind(this);
   }
 
   handleSpaceChange(event) {
     this.setState({
-      spaceVal : event.target.value,
+      spaceVal: event.target.value,
     })
   }
 
   handleBlurChange(event) {
     this.setState({
-      blurVal : event.target.value,
+      blurVal: event.target.value,
+    })
+  }
+
+  handleColorChange(event) {
+    this.setState({
+      colorVal: event.target.value,
+    })
+  }
+
+  handleRotateChange(event) {
+    this.setState({
+      rotateVal: event.target.value
     })
   }
 
   componentDidMount() {
     const controls = document.querySelectorAll('.controls input');
 
+    // FOR DEBUGGING
     function handleUpdate() {
-      console.log(this.value);
+      const suffix = this.dataset.sizing || '';
+      document.documentElement.style.setProperty(`--${this.name}`, `${this.value}${suffix}`);
     }
 
     controls.forEach(input => {
       input.addEventListener('change', handleUpdate)
+    });    
+    controls.forEach(input => {
+      input.addEventListener('mousemove', handleUpdate)
     });
 
   }
 
   render() {
-    const { spaceVal, blurVal } = this.state;
-    const { handleSpaceChange, handleBlurChange } = this
+
+    // DESTRUCTURING 
+    const { spaceVal, blurVal, colorVal, rotateVal } = this.state;
+    const { handleSpaceChange, handleBlurChange, handleColorChange, handleRotateChange } = this
+
     return (
       <div className="CSSVariables-container">
 
@@ -75,12 +98,24 @@ class CSSVariables extends Component {
 
           <label htmlFor="base">Base Color</label>
           <input 
-            id="base" type="color"
-            name="base" value="#ffc600"
+            id="base" name="base"
+            type="color"
+            value={ colorVal }
+            onChange={ handleColorChange }
+          />
+
+          <label htmlFor="rotate">Rotate:</label>
+          <input 
+            id="rotate" name="rotate"
+            type="range" 
+            data-sizing="deg"
+            min="0" max="360"
+            value={ rotateVal }
+            onChange={ handleRotateChange }
           />
         </div>
 
-        <img className="city" src="https://source.unsplash.com/7bwQXzbF6KE/800x500" alt="city" />
+        <img className="randomImg" src="https://picsum.photos/800/500/?random" alt="city" />
 
       </div>
     );

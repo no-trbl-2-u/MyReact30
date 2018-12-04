@@ -1,14 +1,17 @@
 
 :root {
-  --base: yellow;
-  --spacing: 10px;
-  --blur: 10px;
+  --base: white;
+  --spacing: 0px;
+  --blur: 0px;
+  --rotate: 0deg;
 }
 
-.city {
+.randomImg {
   padding: var(--spacing);
   background: var(--base);
   filter: blur(var(--blur));
+  transform: rotate(var(--rotate));
+  z-index: -1;
 }
 
 /* JS in title  */
@@ -30,9 +33,25 @@ body {
 }
 
 .controls {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+
   margin-bottom: 50px;
+  margin: 20px;
+  margin-left: 50px;
+
+  z-index: 4;
 }
 
-input {
+.controls input {
+  margin: 25px;
   width: 100px;
+  
+  z-index: 5;
+}
+
+.controls label {
+  font-size: 40px;
+  z-index: 4;
 }
