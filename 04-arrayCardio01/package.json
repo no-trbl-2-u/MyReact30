@@ -1,0 +1,11 @@
+{
+  "name": "04-arraycardio01",
+  "version": "1.0.0",
+  "description": "Day 04 of Wes Bos's Javascript30 - Array Cardio 01",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TJ Allen",
+  "license": "MIT"
+}
