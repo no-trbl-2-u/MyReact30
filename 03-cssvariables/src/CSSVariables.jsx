@@ -13,6 +13,9 @@ class CSSVariables extends Component {
       blurVal : 0,
       colorVal : 0
     }
+
+    this.handleSpaceChange = this.handleSpaceChange.bind(this);
+    this.handleBlurChange = this.handleBlurChange.bind(this);
   }
 
   handleSpaceChange(event) {
@@ -21,12 +24,28 @@ class CSSVariables extends Component {
     })
   }
 
+  handleBlurChange(event) {
+    this.setState({
+      blurVal : event.target.value,
+    })
+  }
+
   componentDidMount() {
     const controls = document.querySelectorAll('.controls input');
+
+    function handleUpdate() {
+      console.log(this.value);
+    }
+
+    controls.forEach(input => {
+      input.addEventListener('change', handleUpdate)
+    });
+
   }
 
   render() {
-    const { spaceVal } = this.state;
+    const { spaceVal, blurVal } = this.state;
+    const { handleSpaceChange, handleBlurChange } = this
     return (
       <div className="CSSVariables-container">
 
@@ -35,18 +54,30 @@ class CSSVariables extends Component {
         <div className="controls">
 
           <label htmlFor="spacing">Spacing:</label>
-          <input id="spacing" type="range" name="spacing" 
-            min="10" max="200" value={`"${ spaceVal }"`} 
-            data-sizing="px" onChange={this.handleSpaceChange}
+          <input 
+            id="spacing" name="spacing"
+            type="range" 
+            data-sizing="px"
+            min="10" max="200" 
+            value={ spaceVal }
+            onChange={ handleSpaceChange }
           />
 
-
-          {/* <label htmlFor="blur">Blur:</label>
-          <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px" />
+          <label htmlFor="blur">Blur:</label>
+          <input 
+            id="blur" name="blur"
+            type="range" 
+            data-sizing="px"
+            min="0" max="25"
+            value={ blurVal }
+            onChange={ handleBlurChange }
+          />
 
           <label htmlFor="base">Base Color</label>
-          <input id="base" type="color" name="base" value="#ffc600" /> */}
-        
+          <input 
+            id="base" type="color"
+            name="base" value="#ffc600"
+          />
         </div>
 
         <img className="city" src="https://source.unsplash.com/7bwQXzbF6KE/800x500" alt="city" />
