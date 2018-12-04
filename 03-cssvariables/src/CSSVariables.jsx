@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 
 import './CSSVariables.css';
 
-import './Components/SpaceInput'
-// import SpaceInput from './Components/SpaceInput';
+import SpaceInput from './Components/SpaceInput';
+import BlurInput from './Components/BlurInput';
+import ColorInput from './Components/ColorInput';
+import RotateInput from './Components/RotateInput';
 
 class CSSVariables extends Component {
   constructor() {
@@ -20,54 +22,61 @@ class CSSVariables extends Component {
     this.handleColorChange = this.handleColorChange.bind(this);
     this.handleRotateChange = this.handleRotateChange.bind(this);
   }
+  // Unbound method to update the document's style
+  handleStyleUpdating(event) {
+    const { name,  value, dataset} = event.target
+    const suffix = dataset.sizing || '';
+
+    // Update the CSS Variables
+    document.documentElement.style.setProperty(`--${name}`, `${value}${suffix}`);
+  }
 
   handleSpaceChange(event) {
+    const { value: spaceVal } = event.target
+
     this.setState({
-      spaceVal: event.target.value,
+      spaceVal
     })
+
+    this.handleStyleUpdating(event);
   }
 
   handleBlurChange(event) {
+    const { value: blurVal } = event.target
+
     this.setState({
-      blurVal: event.target.value,
+      blurVal
     })
+
+    this.handleStyleUpdating(event);
   }
 
   handleColorChange(event) {
+    const { value: colorVal } = event.target
+
     this.setState({
-      colorVal: event.target.value,
+      colorVal
     })
+
+    this.handleStyleUpdating(event);
   }
 
   handleRotateChange(event) {
+    const { value: rotateVal } = event.target
+
     this.setState({
-      rotateVal: event.target.value
+      rotateVal
     })
-  }
 
-  componentDidMount() {
-    const controls = document.querySelectorAll('.controls input');
-
-    // FOR DEBUGGING
-    function handleUpdate() {
-      const suffix = this.dataset.sizing || '';
-      document.documentElement.style.setProperty(`--${this.name}`, `${this.value}${suffix}`);
-    }
-
-    controls.forEach(input => {
-      input.addEventListener('change', handleUpdate)
-    });    
-    controls.forEach(input => {
-      input.addEventListener('mousemove', handleUpdate)
-    });
-
+    this.handleStyleUpdating(event);
   }
 
   render() {
 
-    // DESTRUCTURING 
+    // "SELF" - DESTRUCTION ;)
     const { spaceVal, blurVal, colorVal, rotateVal } = this.state;
-    const { handleSpaceChange, handleBlurChange, handleColorChange, handleRotateChange } = this
+    const { handleSpaceChange, handleBlurChange,
+            handleColorChange, handleRotateChange } = this
 
     return (
       <div className="CSSVariables-container">
@@ -75,47 +84,28 @@ class CSSVariables extends Component {
         <h2>Update CSS Variables with <span className='hl'>JS</span></h2>
 
         <div className="controls">
-
-          <label htmlFor="spacing">Spacing:</label>
-          <input 
-            id="spacing" name="spacing"
-            type="range" 
-            data-sizing="px"
-            min="10" max="200" 
-            value={ spaceVal }
-            onChange={ handleSpaceChange }
+          <SpaceInput 
+            spaceVal={ spaceVal }
+            handleSpaceChange={ handleSpaceChange }
           />
 
-          <label htmlFor="blur">Blur:</label>
-          <input 
-            id="blur" name="blur"
-            type="range" 
-            data-sizing="px"
-            min="0" max="25"
-            value={ blurVal }
-            onChange={ handleBlurChange }
+          <BlurInput
+            blurVal={ blurVal }
+            handleBlurChange={ handleBlurChange }
           />
 
-          <label htmlFor="base">Base Color</label>
-          <input 
-            id="base" name="base"
-            type="color"
-            value={ colorVal }
-            onChange={ handleColorChange }
+          <ColorInput
+            colorVal={ colorVal }
+            handleColorChange={ handleColorChange }
           />
 
-          <label htmlFor="rotate">Rotate:</label>
-          <input 
-            id="rotate" name="rotate"
-            type="range" 
-            data-sizing="deg"
-            min="0" max="360"
-            value={ rotateVal }
-            onChange={ handleRotateChange }
+          <RotateInput
+            rotateVal={ rotateVal }
+            handleRotateChange={ handleRotateChange }
           />
         </div>
 
-        <img className="randomImg" src="https://picsum.photos/800/500/?random" alt="city" />
+        <img className="randomImg" src="https://picsum.photos/800/500/?random"alt="A randomly Generated img" />
 
       </div>
     );

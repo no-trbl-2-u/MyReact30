@@ -11,6 +11,10 @@
   background: var(--base);
   filter: blur(var(--blur));
   transform: rotate(var(--rotate));
+
+  width: 80%;
+  /* height: 160%; */
+
   z-index: -1;
 }
 
