@@ -16,17 +16,22 @@ const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick
 
 // Array.prototype.filter()
 // 1. Filter the list of inventors for those who were born in the 1500's
+
+// Solution
 const results01 = inventors.filter(ea => ea.year > 1500 && ea.year < 1600)
 
 
 // Array.prototype.map()
 // 2. Give us an array of the inventors' first and last names
+
+// Solution
 const results02 = inventors.map(ea => ({first: ea.first, last: ea.last}))
 // const mistake = inventors.map(ea => {first: ea.first, last: ea.last}) // ERROR
 
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
+
 // Example data for Array.prototype.sort()
 const numArray = [2, 3, 1, 4]
 const alphaArray = ['d', 'a', 'c', 'b']
@@ -43,17 +48,25 @@ const alphaDec = (a, b) => b > a;
 // Solution
 const results03 = [...inventors].sort((a, b) => b.year - a.year)
 
+
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live?
+
 // We'll use the numArray from the previous example
 const sumOfNumArray = numArray.reduce((accum, each) => accum += each);
 // console.log(sumOfNumArray); // 10
 
-const results04 = inventors.reduce((accum, each) => accum += each.year)
-// console.log(results04)
+// Solution
+const results04 = inventors.reduce((accum, ea) => accum += (ea.passed - ea.year), 0)
 
 
 // 5. Sort the inventors by years lived
+const results05Mistake = [...inventors].sort((a, b) => (a.passed - a.years) - (b.passed - b.years))
+// const results05 = [...inventors]
+//   .map(ea => Object.assign({}, ea, {lived: (ea.passed - ea.year)}))
+//   .sort((a, b) => a.lived - b.lived)
+
+console.log(results05Mistake)
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
