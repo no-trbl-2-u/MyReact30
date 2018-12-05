@@ -61,6 +61,8 @@ const results04 = inventors.reduce((accum, ea) => accum += (ea.passed - ea.year)
 
 // 5. Sort the inventors by years lived
 const results05Mistake = [...inventors].sort((a, b) => (a.passed - a.year) - (b.passed - b.year))
+
+// Solution
 const results05 = [...inventors]
   .map(ea => Object.assign({}, ea, {lived: (ea.passed - ea.year)}))
   .sort((a, b) => a.lived - b.lived)
@@ -75,6 +77,8 @@ const results05 = [...inventors]
 // const _cities = link.map(ea => ea.textContent);
 
 const cities = ["Boulevards of Paris", "City walls of Paris", "Thiers wall", "Wall of Charles V", "Wall of Philip II Augustus", "City gates of Paris", "Haussmann's renovation of Paris", "Boulevards of the Marshals", "Boulevard Auguste-Blanqui", "Boulevard Barbès", "Boulevard Beaumarchais", "Boulevard de l'Amiral-Bruix", "Boulevard des Capucines", "Boulevard de la Chapelle", "Boulevard de Clichy", "Boulevard du Crime", "Boulevard Haussmann", "Boulevard de l'Hôpital", "Boulevard des Italiens", "Boulevard de la Madeleine", "Boulevard de Magenta", "Boulevard Montmartre", "Boulevard du Montparnasse", "Boulevard Raspail", "Boulevard Richard-Lenoir", "Boulevard de Rochechouart", "Boulevard Saint-Germain", "Boulevard Saint-Michel", "Boulevard de Sébastopol", "Boulevard de Strasbourg", "Boulevard du Temple", "Boulevard Voltaire", "Boulevard de la Zone"]
+
+// Solution
 const de = cities.filter(ea => ea.split(' ').includes('de'));
 
 // 7. sort Exercise
@@ -83,10 +87,28 @@ const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick
 const people2 = people.map(ea => ea.split(', '));
 const peopleRecord = people2.map(ea => ({first: ea[1], last: ea[0]}))
 
+// Solution
 const sortedRecord = peopleRecord.sort((prev, next) => prev.last > next.last ? 1 : -1)
-console.log(sortedRecord)
 
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+// Giant Solution
+const vehicleRecord = data
+  .reduce((obj, item) => {
+
+    if(!obj[item]){
+      obj[item] = 0;
+    }
+
+    obj[item] += 1;
+
+    return obj
+  }, {}
+)
+const arrayOfArrays = Array.from(Object.entries(vehicleRecord))
+const vehicleArraysFlattened = arrayOfArrays.reduce((prev, next) => prev.concat(next))
+const vehicleTallies = vehicleArraysFlattened.filter(ea => Number.isInteger(ea))
+const sumOfTallies = vehicleTallies.reduce((accum, ea) => accum += ea)
