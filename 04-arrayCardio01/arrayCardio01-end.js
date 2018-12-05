@@ -12,7 +12,6 @@ const inventors = [
   { first: 'Lise', last: 'Meitner', year: 1878, passed: 1968 },
   { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
 ];
-const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
 
 // Array.prototype.filter()
 // 1. Filter the list of inventors for those who were born in the 1500's
@@ -61,19 +60,32 @@ const results04 = inventors.reduce((accum, ea) => accum += (ea.passed - ea.year)
 
 
 // 5. Sort the inventors by years lived
-const results05Mistake = [...inventors].sort((a, b) => (a.passed - a.years) - (b.passed - b.years))
-// const results05 = [...inventors]
-//   .map(ea => Object.assign({}, ea, {lived: (ea.passed - ea.year)}))
-//   .sort((a, b) => a.lived - b.lived)
+const results05Mistake = [...inventors].sort((a, b) => (a.passed - a.year) - (b.passed - b.year))
+const results05 = [...inventors]
+  .map(ea => Object.assign({}, ea, {lived: (ea.passed - ea.year)}))
+  .sort((a, b) => a.lived - b.lived)
 
-console.log(results05Mistake)
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+//             Steps to walk through to get the array information
+// const start = document.querySelector('.mw-category');
+// const links = Array.from(start.querySelectorAll('a'));
+// const _cities = link.map(ea => ea.textContent);
+
+const cities = ["Boulevards of Paris", "City walls of Paris", "Thiers wall", "Wall of Charles V", "Wall of Philip II Augustus", "City gates of Paris", "Haussmann's renovation of Paris", "Boulevards of the Marshals", "Boulevard Auguste-Blanqui", "Boulevard Barbès", "Boulevard Beaumarchais", "Boulevard de l'Amiral-Bruix", "Boulevard des Capucines", "Boulevard de la Chapelle", "Boulevard de Clichy", "Boulevard du Crime", "Boulevard Haussmann", "Boulevard de l'Hôpital", "Boulevard des Italiens", "Boulevard de la Madeleine", "Boulevard de Magenta", "Boulevard Montmartre", "Boulevard du Montparnasse", "Boulevard Raspail", "Boulevard Richard-Lenoir", "Boulevard de Rochechouart", "Boulevard Saint-Germain", "Boulevard Saint-Michel", "Boulevard de Sébastopol", "Boulevard de Strasbourg", "Boulevard du Temple", "Boulevard Voltaire", "Boulevard de la Zone"]
+const de = cities.filter(ea => ea.split(' ').includes('de'));
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
+const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
+const people2 = people.map(ea => ea.split(', '));
+const peopleRecord = people2.map(ea => ({first: ea[1], last: ea[0]}))
+
+const sortedRecord = peopleRecord.sort((prev, next) => prev.last > next.last ? 1 : -1)
+console.log(sortedRecord)
+
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
