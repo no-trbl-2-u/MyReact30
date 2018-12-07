@@ -1,36 +1,38 @@
 import React from 'react';
 
+import './Panels.css'
+
 const Panels = () => {
   return (
     <div className="panels">
       <div className="panel panel1">
-        <p>Hey</p>
-        <p>Let's</p>
-        <p>Dance</p>
+        <p>Who</p>
+        <p>We</p>
+        <p>Are?</p>
       </div>
 
       <div className="panel panel2">
-        <p>Give</p>
-        <p>Take</p>
-        <p>Receive</p>
+        <p>Must</p>
+        <p>Do</p>
+        <p>All</p>
       </div>
 
       <div className="panel panel3">
-        <p>Experience</p>
-        <p>It</p>
-        <p>Today</p>
+        <p>Not</p>
+        <p>All</p>
+        <p>That</p>
       </div>
 
       <div className="panel panel4">
-        <p>Give</p>
-        <p>All</p>
-        <p>You can</p>
+        <p>Yes</p>
+        <p>The</p>
+        <p>Thing</p>
       </div>
 
       <div className="panel panel5">
-        <p>Life</p>
-        <p>In</p>
-        <p>Motion</p>
+        <p>Ugh!</p>
+        <p>Maths!</p>
+        <p>-fin</p>
       </div>
     </div>
   )
