@@ -22,6 +22,10 @@ class App extends Component {
     })
   }
 
+  handleTextHighlight () {
+    
+  }
+
   updateState(data) {
     this.setState({
       cities: data,
@@ -39,6 +43,7 @@ class App extends Component {
     fetch(url)
       .then(response => response.json())
       .then(jsonifiedData => updateState(jsonifiedData))
+      .catch(ea => console.log(`Fetch Failed: ${ea}`))
   }
 
   render() {

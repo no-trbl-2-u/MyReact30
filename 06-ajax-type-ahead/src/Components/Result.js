@@ -5,7 +5,7 @@ const Result = ({ city, state, population }) => {
     <li>
       <span className="name">{ `${city}, ${state}` }</span>
       <span className="population">{ population }</span> 
-    </li>  
+    </li>
   );
 }
   
