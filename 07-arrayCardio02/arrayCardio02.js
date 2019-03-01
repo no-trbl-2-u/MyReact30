@@ -78,4 +78,13 @@ const solution03 = [...comments]
 // Find the comment with this ID
 // delete the comment with the ID of 823423
 
-console.log(comments.findIndex(byID(823423)))
+const indexOfOurComment = comments.findIndex(byID(823423))
+
+const newComments =
+  comments
+    // Everything BEFORE the index
+    .slice(0, indexOfOurComment)
+    // Everything AFTER the index
+    .concat(comments.slice(indexOfOurComment + 1))
+
+console.log(newComments)
